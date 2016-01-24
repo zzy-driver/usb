@@ -1,0 +1,17 @@
+<html>
+<body>
+<pre>
+<h1>µVision2 Build Log</h1>
+<h2>Project:</h2>
+F:\SW98\C51\MON390\Systronix uCAN2 Monitor\mon390.uv2
+Project File Date:  06/27/2002
+
+<h2>Output:</h2>
+Build target 'µCAN2'
+assembling INSTALL.A51...
+linking...
+Program Size: data=8.0 xdata=32 const=0 code=1736
+creating hex file from "mon390"...
+"mon390" - 0 Error(s), 0 Warning(s).
+Build target 'µCAN2'
+"mon390" - 0 Error(s), 0 Warning(s).

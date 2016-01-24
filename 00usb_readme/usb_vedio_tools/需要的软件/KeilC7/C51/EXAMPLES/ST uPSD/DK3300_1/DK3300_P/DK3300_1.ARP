@@ -1,0 +1,26 @@
+***************************************************************************
+                         PSDsoft Express Version 8.00
+                    Output of Address Translation
+***************************************************************************
+  PROJECT    : dk3300_1                                 DATE : 04/23/2004
+  DEVICE     : uPSD3334D                                TIME : 17:51:18
+***************************************************************************
+
+  Record  Type  : Intel Hex Record 
+  Mapping Mode  : Direct 
+
+  Memory                      Start        Stop        Memory
+  Block                      Address      Address    Data   File 
+--------------------------------------------------------------------------
+  FS0   [00000 - 07FFF]                              
+  FS1   [08000 - 0FFFF]                              
+  FS2   [10000 - 17FFF]                              
+  FS3   [18000 - 1FFFF]                              
+  FS4   [20000 - 27FFF]                              
+  FS5   [28000 - 2FFFF]                              
+  FS6   [30000 - 37FFF]                              
+  FS7   [38000 - 3FFFF]                              
+  CSBOOT0[40000 - 41FFF]          0         1FFF      ..\dk3300_c\DK3300_1.hex
+  CSBOOT1[42000 - 43FFF]                              
+  CSBOOT2[44000 - 45FFF]                              
+  CSBOOT3[46000 - 47FFF]                              

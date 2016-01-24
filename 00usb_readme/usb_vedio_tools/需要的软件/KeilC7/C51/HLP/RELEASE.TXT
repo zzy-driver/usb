@@ -1,0 +1,281 @@
+         /****************************************************/
+         /*           Release Notes for Version 6            */
+         /*           8051 DEVELOPMENT TOOL KITS             */
+         /****************************************************/
+
+This file contains release notes and last minute changes relating to the
+8051 Version 6 toolchain.  Information in this file, the accompanying manual, 
+and software is Copyright (c) 1999 Keil Software and Keil Elektronik.
+All rights reserved.
+
+
+Contents
+========
+
+1. uVision2 Integrated Development Environment
+
+2. Compiler Enhancements
+
+3. Assembler Enhancements
+
+4. Linker Enhancements
+
+5. Manuals Provided
+
+6. Example Programs
+
+7. New Devices
+
+8. uVision2 Debugger Restrictions / Use dScope-51 Debugger
+
+9. Sales and Technical Support
+
+
+
+1. uVision2 Integrated Development Environment
+
+This release includes uVision2 for Windows.  uVision2 is an integrated
+development environment that encapsulates a project manager, integrated
+make facility, tool configuration, editor and a powerful debugger.  You
+use uVision2 to write, compile and debug your programs using our tools.
+The example programs provided are designed to work with uVision2.
+
+
+2. Compiler Enhancements
+
+C51 Version 6 has the following improvements compared to Version 5:
+
+- Three new Optimize Levels:  this new optimizations focus on code density.
+  Compare to C51 Version 5 the new optimization levels of C51 Version 6 
+  recude code size of your application by 5 - 15%.
+  
+  OPTIMIZE(7): Extended Access Optimization: uses the DPTR also for register
+  variables.  Pointer and array accesses have been optimized for both speed
+  and code size.
+
+  OPTIMIZE(8): Re-use Common Entry Code: moves common function entry code
+  on the beginning of a function.  This saves code memory.  OPTIMIZE(8) is
+  the new default level of C51 Version 6.
+
+  OPTIMIZE(9): Common Block Subroutines: multiple instruction sequences are
+  deteced and packed into subroutines.  This optimization is most efficient
+  on large modules.
+
+- The data type enum adjusts now automatically the size to 8 or 16 bits.
+
+- Support for Atmel, Philips and Temic dual DPTR has be added.  It works 
+  the same way as described for the Dallas 80C320, 80C520, 80C530, 80C550
+  in the C51 User's Guide, chapter 5.
+
+  Philips and Temic devices:  Dual DPTR's are today available on several 
+  Philips devices.  The C51 directive MODP2 generates code for dual DPTR's.
+  NOMODP2 disables dual DPTR usage.
+
+  Atmel devices:  Dual DPTR's are currently available only on AT89S8252.
+  The C51 directive MODA2 generates code for dual DPTR's on Atmel.
+  NOMODA2 disables dual DPTR usage.
+
+- One interrupt service routines without 'using' attribute, C51 ensures
+  now that the registerbank 0 is selected during execution.  This adds
+  the instruction MOV PSW,#0 to the interrupt service routine.  However,
+  now you can omit also the using attribute on high-priority interrupts,
+  when you have other low-priority interrupts with a 'using' attribute
+  (which is also the case in RTX-51 and RTX-51 Tiny applications).
+
+  If you are using only the registerbank 0 in your application, you can
+  use the C51 directive  ONEREGBANK.  Then C51 does not generate the
+  additional MOV PSW,#0 instruction.
+
+
+3. Assembler Enhancements
+
+The following features have been added to A51 Version 6:
+  - C Pre-processor added
+  - C sfr and sbit definitions
+These features are described in the following.
+
+- C Preprocessor:  A standard C macro pre-processor expands the source text 
+  before the file is translated.  The C pre-processor is almost identical to
+  the pre-processor implemented in the C51 Compiler and is described in the
+  C51 User's Guide, Chapter 4.  The #include file path specification is taken
+  from the enviroment variable C51INC.
+
+  The following pre-defined Macros exist in A51:
+  __FILE__   Name of the file being translated
+  __LINE__   Current line number in the file being compiled
+  __TIME__   Time when the translation was started
+  __DATE__   Date when the translation was started
+  __STDC__   Defined to 1
+  __A51__    Version number of the A51 Assembler (for example 600 for V6.00)
+  __KEIL__   Defined to 1
+
+
+- C sfr, sbit Declarations:  A51 now accepts standard register defintion files 
+  from C51.  Therefore the sfr and sbit C Declarations are added.
+
+  Example:
+  sfr  P0 = 0x80;
+  sbit P0_1 = P0^1;
+
+
+- ERROR output:  The user may generate standard error messages with the 
+  __ERROR__ directive.
+
+  Example:
+  IF CVAR1LEN > 10
+    __ERROR__ "CVAR1 LEN EXCEEDS 10 BYTES"
+  ENDIF
+
+  #ifdef TESTVERS && RELEASE
+    #error TESTVERS GENERATED IN RELEASE MODE
+  #endif
+
+
+- INCDIR Directive (Abbreviation ID): with INCDIR you can supply one or more 
+  paths to search for when a $INCLUDE (file) directive is processed.
+
+  Example:
+  $INCDIR (C:\C51\ASM)
+  A51 STARTUP.A51 INCDIR (C:\C51\INC,C:\MYDIR)
+
+  The search order for $INCLUDE is as follows:
+  - current directory (typical the folder of the uVision2 project file)
+  - paths specified with $INCDIR
+  - path derrived from the bin directory with ..\asm path
+    (this is C:\Keil\C51\Asm in default installations).
+
+  The search order for #include is identical to C51.
+
+
+4. Linker Enhancements
+
+BL51 Version 4.0 has the following improvements:
+
+- With the directive DISABLEWARNING (Abbr. DW) you can selectively disable
+  Linker warnings.  Example:
+     BL51 myfile.obj DISABLEWARNING (1, 5)
+  will disable the report of Warning Number 1 and 5.
+
+- The new BL51 version sorts the segment size and locates the segments
+  according its length.  This typically ensures less GAPS in the memory
+  space.  If it is required to disable this feature, i.e. to get the
+  behaviour of the previous version, state the NOSORTSIZE (Abbr. NOSO)
+  directive in linker invocation line.
+
+- The directive SPEEDOVL (Abbr. SP) you can select that the linker does
+  no longer uses the references to the constant segments starting with
+  ?CO?.  However, this might result also in missing warnings, when you
+  are using pointers to functions without correction of the references
+  (refer to the 8051 Utilities User's Guide, page 34 - page 41 for more
+  information).  This directive might be useful for applications with
+  complex pointer to function tables.
+
+- The directive NOAJMP (Abbr. NOAJ) you can disable the use of the AJMP
+  instruction in the interbank jump table.  This option is required for
+  8051 derivatives which are not supporting the AJMP instruction.
+
+- With the BL51 directive RECURSIONS (Abbr. RC) you can specify the number
+  of RECURSIONS allowed, before the Linker reponses with the message:
+    FATAL ERROR 232: APPLICATION CONTAINS TOO MANY RECURSIONS.
+
+  Example for using the RECURSIONS directive:
+    BL51 test.obj  RECURSIONS (100)
+  It should be noted that the linker may run for a long time to detect
+  all recursions and remove the references.  You should therefore use
+  the standard setting RECURSIONS (10) by default.
+
+- By default, BL51 inserts inter-bank CALL's for indirect called functions
+  in code banking applications.  If your application is using many pointer
+  to functions and if you can ensure, that these indirect calls never cross
+  a code bank, you can use the NOINDIRECTCALL (Abbr. NOIC) directive.
+
+- When the new NOJMPTAB (Abbr. NOJT) directive is stated, BL51 does not
+  longer insert any inter-bank calls for program calls.  This feature is
+  implemented to use user-defined bank switch mechanism for code banking.
+
+  The NOJMPTAB directive modifies the following features of BL51:
+  a) the linker does not longer need bank logic file: L51_BANK.OBJ.
+  b) the linker does not modify any jump call instructions.
+  c) the linker does not generate any warnings if a jump/call is made to
+     another bank.
+
+  The user must ensure that the proper bank is selected before a call is
+  done.  The BL51 code banking linker does not longer select the bank
+  automatically.
+
+
+5. Manuals Provided
+
+The 8051 release includes the Getting Started and Creating Applications User's
+Guide.  This manual leads you step-by-step though several example programs.  
+It also introduces you to our broad product line.  In addition, it is a
+quick reference for all of our 8051 and 251-based development tools.
+The manual is available in PDF format under \KEIL\C51\HLP\GS51.PDF.
+
+
+6. Example Programs
+
+Several example programs are included in the EXAMPLES directory.  These files
+demonstrate how to use the uVision2 Project Manager and Debugger.  More
+Information can be found in the uVision2 Quick Start Guide.
+
+
+7. New Devices
+
+The C51 Version 6 covers support for 8051 derivatives currently available.
+We have added header and support files for Atmel devices, the Intel 151,
+and several new Philips and Siemens devices.  The configuration of the 
+Intel 151 is performed with the file LIB\CONF151.A51.
+
+Also included is support for multiple DPTR's on Atmel, Dallas, Infineon,
+Philips and Temic devices.  
+
+
+8. uVision2 Debugger Restrictions / Use dScope-51 Debugger
+
+The uVision2 Debugger is currently not fully completed.  It lacks support
+for the Monitor-51 and several devices.  This support will be completed in
+Q1/2000.  As intermediate solution you should use the dScope-51 that is 
+available in the C51 Version 5 package.  You may invoke dScope-51 via the 
+uVision2 tools menu.  The following setup calls dScope-51 with an INI file 
+that depends on the project name of the current uVision2 project.
+
+*  Use uVision2 Tools - Customize Tool Menu dialog.
+*  Enter the following information:
+   -  Menu Content:   Run dScope-51 with @P
+   -  Command:        C:\C51\BIN\DSW51.EXE      // depends on your installation
+   -  Initial Folder: <empty>
+   -  Arguments:      -i @P.INI
+
+Now you can start dScope-51 directly from the uVision2 Tools menu.
+You may create a INI file that contains the following content:
+
+---- Example:  HELLO.INI (dScope INI file for HELLO project)
+LOAD 8051.DLL      // the device you want to simulate with dScope-51.
+LOAD HELLO         // the application you want to load
+g, main            // run program til entry 'main'
+
+
+9. Sales and Technical Support
+
+We at Keil Software are dedicated to providing you with the best
+development tools and the best sales and technical support.  If you
+experience any problems or have any questions about this software,
+contact one of our offices for assistance.
+
+
+In the USA...                           In Europe...
+
+KEIL Software, Inc.                     KEIL Elektronik GmbH
+16990 Dallas Parkway, Suite 120         Bretonischer Ring 15
+Dallas, Texas  75248-1903               D-85630 Grasbrunn, Germany
+
+Sales/Support (800) 348-8051            Sales   +49 89 456040-0
+                                        Support +49 89 456040-24
+BBS           (972) 713-9883            BBS     +49 89 4606286 
+Fax           (972) 735-8055            Fax     +49 89 468162
+Email       support@keil.com            Email   support.intl@keil.com
+
+                    INTERNET:   http://www.keil.com/
+
+                                   -O-

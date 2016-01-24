@@ -1,0 +1,17 @@
+[ProjectInfo]
+Project=dk3300_1
+Directory=C:\Keil\C51\EXAMPLES\ST uPSD\DK3300_1\dk3300_p
+Device Family=uPSD3000
+PartName=uPSD3334D
+Template=
+Description=DK3300  PWM/ADC demo
+
+
+[MemoryMapInfo]
+Address Mask=0x00FFFF
+Natural address field length(bits)=0x10
+Memcs0=csboot0,0byyyyyyyy,0x0000,0x1FFF,F
+Memcs1=rs0,0byyyyyyyy,0x2000,0x3FFF,V
+Memcs2=csiop,0byyyyyyyy,0x0200,0x02FF,V
+Memcs3=psel0,0byyyyyyyy,0x0300,0x03FF,Peripheral
+Memcs4=LCD_e,0byyyyyyyy,0x0300,0x03FF,Peripheral;0byyyyyyyy,0x0300,0x03FF,Peripheral

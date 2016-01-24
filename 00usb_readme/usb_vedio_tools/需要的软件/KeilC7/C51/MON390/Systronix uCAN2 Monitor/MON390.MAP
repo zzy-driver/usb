@@ -1,0 +1,314 @@
+LX51 LINKER/LOCATER V3.30                                                               07/25/2002  13:41:47  PAGE 1
+
+
+LX51 LINKER/LOCATER V3.30, INVOKED BY:
+C:\KEIL\C51\BIN\LX51.EXE INSTALL.obj, ..\mon390.LIB TO mon390
+
+
+CPU MODE:     DALLAS CONTIGIOUS MODE
+
+
+INPUT MODULES INCLUDED:
+  INSTALL.obj (CONFIG)
+         COMMENT TYPE 0: AX51 V1.30
+  ..\mon390.LIB (MON390)
+         COMMENT TYPE 0: AX51 V1.30
+
+
+ACTIVE MEMORY CLASSES OF MODULE:  mon390 (CONFIG)
+
+BASE        START       END         USED      MEMORY CLASS
+==========================================================
+C:000000H   C:000000H   C:FFFFFFH   0006C8H   ECODE
+X:000000H   X:000000H   X:FFFFFFH   000020H   HDATA
+I:000000H   I:000000H   I:00007FH   000008H   DATA
+
+
+MEMORY MAP OF MODULE:  mon390 (CONFIG)
+
+
+START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
+=========================================================================
+
+* * * * * * * * * * *   D A T A   M E M O R Y   * * * * * * * * * * * * *
+000000H   000007H   000008H   ---    AT..     DATA           "REG BANK 0"
+
+* * * * * * * * * * *   C O D E   M E M O R Y   * * * * * * * * * * * * *
+000000H   000193H   000194H   BYTE   AT..     ECODE          ?PR?INITSEG
+000194H   0001FFH   00006CH   ---    ---      **GAP**
+000200H   000733H   000534H   PAGE   INSEG    ECODE          ?PR?MON390
+
+* * * * * * * * * * *  X D A T A   M E M O R Y  * * * * * * * * * * * * *
+01FFE0H   01FFFFH   000020H   BYTE   AT..     HDATA          ?FD?MON_DATA
+
+
+
+PUBLIC SYMBOLS OF MODULE:  mon390 (CONFIG)
+
+
+      VALUE       CLASS    TYPE      PUBLIC SYMBOL NAME
+      =================================================
+      00000081H   NUMBER   ---       ?C?CODEMTYPE
+      00000000H   NUMBER   ---       ?C?CODESEG
+      00000001H   NUMBER   ---       ?C?XDATAMTYPE
+      00000000H   NUMBER   ---       ?C?XDATASEG
+*SFR* 000000E0H   DATA     BYTE      ACC
+*SFR* 0000009DH   DATA     BYTE      ACON
+      01000191H   ECODE    ---       AFTER_GO
+      01000190H   ECODE    ---       BEFORE_GO
+*SFR* 0000008EH   DATA     BYTE      CKCON
+      0001EFFFH   NUMBER   ---       CODE_RAM_END
+      00001000H   NUMBER   ---       CODE_RAM_START
+*SFR* 000000A8H.7 DATA     BIT       EA
+*SFR* 000000A8H.4 DATA     BIT       ES
+*SFR* 000000A8H   DATA     BIT       EX0
+      01000141H   ECODE    BYTE      IDENT_STRING
+      00001000H   NUMBER   ---       INT_ADR_OFF
+*SFR* 000000B7H   DATA     BYTE      IPH0
+*SFR* 000000B8H   DATA     BYTE      IPL0
+*SFR* 000000C6H   DATA     BYTE      MCON
+LX51 LINKER/LOCATER V3.30                                                             07/25/2002  13:41:47  PAGE 2
+
+
+      00000000H   NUMBER   ---       MON_CODE_START
+      01000200H   ECODE    FAR LAB   MONBREAK
+      0201FFE0H   HDATA    ---       MONDATA
+      0001FFE0H   NUMBER   ---       MONDATA_CODE
+      01000339H   ECODE    FAR LAB   MONSTART
+*SFR* 00000090H   DATA     BYTE      P1
+*SFR* 00000092H   DATA     BYTE      P4CNT
+*SFR* 00000087H   DATA     BYTE      PCON
+*SFR* 000000D1H   DATA     BYTE      PSW1
+      01000178H   ECODE    NEAR LAB  RECEIVEBYTE
+*SFR* 00000098H   DATA     BIT       RI
+*SFR* 00000099H   DATA     BYTE      SBUF
+*SFR* 00000098H   DATA     BYTE      SCON0
+      01000169H   ECODE    NEAR LAB  SENDBYTE
+      01000174H   ECODE    NEAR LAB  SENDCHECK
+      00000023H   NUMBER   ---       SER_INT_OFF
+      01000329H   ECODE    FAR LAB   SERBREAK
+      0100018BH   ECODE    NEAR LAB  SERINT_DISABLE
+      01000186H   ECODE    NEAR LAB  SERINT_ENABLE
+*SFR* 000000C7H   DATA     BYTE      TA
+*SFR* 00000088H   DATA     BYTE      TCON
+*SFR* 0000008DH   DATA     BYTE      TH1
+*SFR* 00000098H.1 DATA     BIT       TI
+*SFR* 00000089H   DATA     BYTE      TMOD
+*SFR* 00000088H.6 DATA     BIT       TR1
+      01000192H   ECODE    ---       WR_CODE
+
+
+
+SYMBOL TABLE OF MODULE:  mon390 (CONFIG)
+
+      VALUE       REP       CLASS    TYPE      SYMBOL NAME
+      ====================================================
+      ---         MODULE    ---      ---       CONFIG
+      01000191H   PUBLIC    ECODE    ---       AFTER_GO
+      01000190H   PUBLIC    ECODE    ---       BEFORE_GO
+      0001EFFFH   PUBLIC    NUMBER   ---       CODE_RAM_END
+      00001000H   PUBLIC    NUMBER   ---       CODE_RAM_START
+      01000141H   PUBLIC    ECODE    BYTE      IDENT_STRING
+      00001000H   PUBLIC    NUMBER   ---       INT_ADR_OFF
+      00000000H   PUBLIC    NUMBER   ---       MON_CODE_START
+      0201FFE0H   PUBLIC    HDATA    ---       MONDATA
+      0001FFE0H   PUBLIC    NUMBER   ---       MONDATA_CODE
+      01000178H   PUBLIC    ECODE    NEAR LAB  RECEIVEBYTE
+      01000169H   PUBLIC    ECODE    NEAR LAB  SENDBYTE
+      01000174H   PUBLIC    ECODE    NEAR LAB  SENDCHECK
+      00000023H   PUBLIC    NUMBER   ---       SER_INT_OFF
+      0100018BH   PUBLIC    ECODE    NEAR LAB  SERINT_DISABLE
+      01000186H   PUBLIC    ECODE    NEAR LAB  SERINT_ENABLE
+      01000192H   PUBLIC    ECODE    ---       WR_CODE
+      000000E0H   SFRSYM    DATA     BYTE      ACC
+      0000009DH   SFRSYM    DATA     BYTE      ACON
+      0000008EH   SFRSYM    DATA     BYTE      CKCON
+      000000A8H.7 SFRSYM    DATA     BIT       EA
+      000000A8H.4 SFRSYM    DATA     BIT       ES
+      000000A8H   SFRSYM    DATA     BIT       EX0
+      000000B7H   SFRSYM    DATA     BYTE      IPH0
+      000000B8H   SFRSYM    DATA     BYTE      IPL0
+      000000C6H   SFRSYM    DATA     BYTE      MCON
+      00000090H   SFRSYM    DATA     BYTE      P1
+      00000092H   SFRSYM    DATA     BYTE      P4CNT
+      00000087H   SFRSYM    DATA     BYTE      PCON
+      000000D1H   SFRSYM    DATA     BYTE      PSW1
+      00000098H   SFRSYM    DATA     BIT       RI
+      00000099H   SFRSYM    DATA     BYTE      SBUF
+LX51 LINKER/LOCATER V3.30                                                             07/25/2002  13:41:47  PAGE 3
+
+
+      00000098H   SFRSYM    DATA     BYTE      SCON0
+      000000C7H   SFRSYM    DATA     BYTE      TA
+      00000088H   SFRSYM    DATA     BYTE      TCON
+      0000008DH   SFRSYM    DATA     BYTE      TH1
+      00000098H.1 SFRSYM    DATA     BIT       TI
+      00000089H   SFRSYM    DATA     BYTE      TMOD
+      00000088H.6 SFRSYM    DATA     BIT       TR1
+      00000002H   SYMBOL    NUMBER   ---       ACON_VAL
+      00000000H   SYMBOL    NUMBER   ---       CMA
+      01000112H   SYMBOL    ECODE    ---       FLASHLOOP
+      01000115H   SYMBOL    ECODE    ---       FWAIT_STATE
+      00000000H   SYMBOL    NUMBER   ---       IDM
+      01000128H   SYMBOL    ECODE    ---       INITSERIAL
+      00000001H   SYMBOL    NUMBER   ---       MCON_VAL
+      0001FFE0H   SYMBOL    NUMBER   ---       MON_RAM_START
+      0100010CH   SYMBOL    ECODE    ---       MONITORSTART
+      00000037H   SYMBOL    NUMBER   ---       P4_VAL
+      00000007H   SYMBOL    NUMBER   ---       P4PF
+      00000006H   SYMBOL    NUMBER   ---       PCES
+      00000001H   SYMBOL    NUMBER   ---       PDCE0
+      00000000H   SYMBOL    NUMBER   ---       PDCE1
+      00000000H   SYMBOL    NUMBER   ---       PDCE2
+      00000000H   SYMBOL    NUMBER   ---       PDCE3
+      00000000H   SYMBOL    NUMBER   ---       SA
+      010000F7H   SYMBOL    ECODE    ---       STARTUP1
+
+      01000003H   BLOCK     ECODE    NEAR LAB  LVL=0
+      01000003H   LINE      ECODE    ---       #135
+      0100000AH   LINE      ECODE    ---       #136
+      0100000BH   LINE      ECODE    ---       #137
+      01000012H   LINE      ECODE    ---       #138
+      01000013H   LINE      ECODE    ---       #139
+      0100001AH   LINE      ECODE    ---       #140
+      0100001BH   LINE      ECODE    ---       #141
+      01000022H   LINE      ECODE    ---       #142
+      01000023H   LINE      ECODE    ---       #145
+      0100002AH   LINE      ECODE    ---       #149
+      0100002BH   LINE      ECODE    ---       #150
+      01000032H   LINE      ECODE    ---       #151
+      01000033H   LINE      ECODE    ---       #152
+      0100003AH   LINE      ECODE    ---       #153
+      0100003BH   LINE      ECODE    ---       #154
+      01000042H   LINE      ECODE    ---       #155
+      01000043H   LINE      ECODE    ---       #156
+      0100004AH   LINE      ECODE    ---       #157
+      0100004BH   LINE      ECODE    ---       #158
+      01000052H   LINE      ECODE    ---       #159
+      01000053H   LINE      ECODE    ---       #160
+      0100005AH   LINE      ECODE    ---       #161
+      0100005BH   LINE      ECODE    ---       #162
+      01000062H   LINE      ECODE    ---       #163
+      01000063H   LINE      ECODE    ---       #164
+      0100006AH   LINE      ECODE    ---       #165
+      0100006BH   LINE      ECODE    ---       #166
+      01000072H   LINE      ECODE    ---       #167
+      01000073H   LINE      ECODE    ---       #168
+      0100007AH   LINE      ECODE    ---       #169
+      0100007BH   LINE      ECODE    ---       #170
+      01000082H   LINE      ECODE    ---       #171
+      01000083H   LINE      ECODE    ---       #172
+      0100008AH   LINE      ECODE    ---       #173
+      0100008BH   LINE      ECODE    ---       #174
+      01000092H   LINE      ECODE    ---       #175
+      01000093H   LINE      ECODE    ---       #176
+      0100009AH   LINE      ECODE    ---       #177
+LX51 LINKER/LOCATER V3.30                                                             07/25/2002  13:41:47  PAGE 4
+
+
+      0100009BH   LINE      ECODE    ---       #178
+      010000A2H   LINE      ECODE    ---       #179
+      010000A3H   LINE      ECODE    ---       #180
+      010000AAH   LINE      ECODE    ---       #181
+      010000ABH   LINE      ECODE    ---       #182
+      010000B2H   LINE      ECODE    ---       #183
+      010000B3H   LINE      ECODE    ---       #184
+      010000BAH   LINE      ECODE    ---       #185
+      010000BBH   LINE      ECODE    ---       #186
+      010000C2H   LINE      ECODE    ---       #187
+      010000C3H   LINE      ECODE    ---       #188
+      010000CAH   LINE      ECODE    ---       #189
+      010000CBH   LINE      ECODE    ---       #190
+      010000D2H   LINE      ECODE    ---       #191
+      010000D3H   LINE      ECODE    ---       #192
+      010000DAH   LINE      ECODE    ---       #193
+      010000DBH   LINE      ECODE    ---       #194
+      010000E2H   LINE      ECODE    ---       #195
+      010000E3H   LINE      ECODE    ---       #196
+      010000EAH   LINE      ECODE    ---       #197
+      010000EBH   LINE      ECODE    ---       #198
+      010000F2H   LINE      ECODE    ---       #199
+      010000F3H   LINE      ECODE    ---       #200
+      010000F7H   LINE      ECODE    ---       #203
+      010000FAH   LINE      ECODE    ---       #204
+      010000FDH   LINE      ECODE    ---       #207
+      01000100H   LINE      ECODE    ---       #209
+      01000103H   LINE      ECODE    ---       #210
+      01000106H   LINE      ECODE    ---       #212
+      01000109H   LINE      ECODE    ---       #216
+      0100010CH   LINE      ECODE    ---       #218
+      0100010EH   LINE      ECODE    ---       #219
+      01000110H   LINE      ECODE    ---       #220
+      01000112H   LINE      ECODE    ---       #221
+      01000114H   LINE      ECODE    ---       #222
+      01000115H   LINE      ECODE    ---       #223
+      01000116H   LINE      ECODE    ---       #224
+      01000117H   LINE      ECODE    ---       #225
+      01000118H   LINE      ECODE    ---       #226
+      0100011AH   LINE      ECODE    ---       #227
+      0100011CH   LINE      ECODE    ---       #228
+      0100011DH   LINE      ECODE    ---       #229
+      0100011FH   LINE      ECODE    ---       #230
+      01000121H   LINE      ECODE    ---       #231
+      01000124H   LINE      ECODE    ---       #237
+      01000128H   LINE      ECODE    ---       #248
+      0100012BH   LINE      ECODE    ---       #249
+      0100012EH   LINE      ECODE    ---       #250
+      01000131H   LINE      ECODE    ---       #251
+      01000134H   LINE      ECODE    ---       #252
+      01000137H   LINE      ECODE    ---       #253
+      0100013AH   LINE      ECODE    ---       #254
+      0100013DH   LINE      ECODE    ---       #256
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000169H   BLOCK     ECODE    NEAR LAB  LVL=0
+      01000169H   LINE      ECODE    ---       #289
+      0100016CH   LINE      ECODE    ---       #290
+      0100016EH   LINE      ECODE    ---       #291
+      01000170H   LINE      ECODE    ---       #292
+      01000173H   LINE      ECODE    ---       #293
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000174H   BLOCK     ECODE    NEAR LAB  LVL=0
+      01000174H   LINE      ECODE    ---       #297
+LX51 LINKER/LOCATER V3.30                                                             07/25/2002  13:41:47  PAGE 5
+
+
+      01000177H   LINE      ECODE    ---       #298
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000178H   BLOCK     ECODE    NEAR LAB  LVL=0
+      01000178H   LINE      ECODE    ---       #302
+      0100017BH   LINE      ECODE    ---       #303
+      0100017EH   LINE      ECODE    ---       #304
+      01000180H   LINE      ECODE    ---       #305
+      01000182H   LINE      ECODE    ---       #306
+      01000185H   LINE      ECODE    ---       #307
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000186H   BLOCK     ECODE    NEAR LAB  LVL=0
+      01000186H   LINE      ECODE    ---       #311
+      01000188H   LINE      ECODE    ---       #312
+      0100018AH   LINE      ECODE    ---       #313
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100018BH   BLOCK     ECODE    NEAR LAB  LVL=0
+      0100018BH   LINE      ECODE    ---       #317
+      0100018DH   LINE      ECODE    ---       #318
+      0100018FH   LINE      ECODE    ---       #319
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000190H   BLOCK     ECODE    NEAR LAB  LVL=0
+      01000190H   LINE      ECODE    ---       #328
+      01000191H   LINE      ECODE    ---       #331
+      01000192H   LINE      ECODE    ---       #333
+      01000193H   LINE      ECODE    ---       #334
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       MON390
+      01000200H   PUBLIC    ECODE    FAR LAB   MONBREAK
+      01000339H   PUBLIC    ECODE    FAR LAB   MONSTART
+      01000329H   PUBLIC    ECODE    FAR LAB   SERBREAK
+
+Program Size: data=8.0 xdata=32 const=0 code=1736
+LX51 RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

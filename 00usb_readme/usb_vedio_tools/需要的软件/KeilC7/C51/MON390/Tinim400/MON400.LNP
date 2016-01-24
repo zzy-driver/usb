@@ -1,0 +1,5 @@
+"INSTALL.obj",
+"..\mon390.LIB" 
+TO "mon400" 
+
+SEGMENTS ( ?PR?INITSEG, ?PR?MON390 ) 

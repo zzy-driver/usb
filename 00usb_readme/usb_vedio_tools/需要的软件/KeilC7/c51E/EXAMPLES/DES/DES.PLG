@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>µVision3 Build Log</h1>
+<h2>Project:</h2>
+D:\dev\Keilc\c51E\EXAMPLES\DES\DES.uv2
+Project File Date:  04/05/2006
+
+<h2>Output:</h2>
+Build target 'Simulator'
+compiling Des.c...
+DES.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
+linking...
+"des" - 0 Error(s), 1 Warning(s).
+Build target 'Simulator'
+compiling Des.c...
+DES.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
+linking...
+"des" - 0 Error(s), 1 Warning(s).
+Build target 'Simulator'
+compiling Des.c...
+DES.C(1): warning C500: MISSING DEVICE (R012: DRIVER NOT INSTALLED)
+linking...
+BL51 BANKED LINKER/LOCATER V6.00 - SN: K1CBA-JET4K0
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2005
+"Des.obj" 
+TO "des" 
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 1E23H BYTE (376%) *
+******************************************************************************
+Program Size: data=15.1 xdata=3411 code=9733
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
+*** FATAL ERROR L250: CODE SIZE LIMIT IN RESTRICTED VERSION EXCEEDED
+    MODULE:  C:\KEIL\C51\LIB\C51L.LIB (-----)
+    LIMIT:   0800H BYTES
+Target not created

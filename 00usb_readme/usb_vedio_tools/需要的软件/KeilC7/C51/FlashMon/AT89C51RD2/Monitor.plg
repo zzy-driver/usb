@@ -1,0 +1,18 @@
+<html>
+<body>
+<pre>
+<h1>µVision2 Build Log</h1>
+<h2>Project:</h2>
+D:\dev\Keilc\C51\FlashMon\AT89C51RD2\Monitor.uv2
+Project File Date:  05/02/2003
+
+<h2>Output:</h2>
+Build target 'Monitor for Flash'
+assembling INSTALL.A51...
+linking...
+Program Size: data=59.3 xdata=196 const=0 code=3796
+creating hex file from "Monitor"...
+"Monitor" - 0 Error(s), 0 Warning(s).
+</pre>
+</body>
+</html>

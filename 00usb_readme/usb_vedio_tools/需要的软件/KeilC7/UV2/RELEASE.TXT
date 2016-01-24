@@ -1,0 +1,99 @@
+         /****************************************************/
+         /*                Release Notes to                  */
+         /*              uVision2 Version 2.0                */
+         /****************************************************/
+
+This file contains release notes and last minute changes relating to uVision2
+Version 2 and the related tool chains. Information in this file, the accompanying
+manual, and software is Copyright (c) 1999 Keil Software and Keil Elektronik.
+All rights reserved.
+
+
+
+Contents
+========
+
+1. uVision2 Integrated Development Environment for Windows
+
+2. Example Programs and First Steps
+
+3. On-line Manuals and Technical References
+
+4. Sales and Technical Support
+
+
+
+1. uVision2 Integrated Development Environment
+
+uVision2 is an IDE that encapsulates a project manager, make facility, tool
+configuration, editor and a powerful debugger.  You use uVision2 to write
+and compile your programs using our tools.  The example programs provided
+are designed to work with uVision2.
+
+
+2. Example Programs and First Steps
+
+When you create a new project you have to select a Device from the device
+database.  However we provide also some sample projects which are located
+in the folders \C51\EXAMPLES and \C166\EXAMPLES.  
+
+HELLO    is a simple program which prints the string "Hello World" via the
+         Serial I/O Interface of the 166 derivative
+
+MEASURE  Data acquisition system for analog and digital systems.
+
+DHRY     is the Dhrystone Benchmark.
+
+WHETS    is the Single Precision Whetstone Benchmark.
+
+To generate an application:
+a)  Select Project - Open Project:  i.e.  C166\examples\hello\hello.uv2
+b)  Project - Rebuild all target files or Build target
+
+To create an own application:
+a)  Project - New Project:  select a directory and enter project file
+b)  Project - Select Device:  select an 8051, 166, or ST10 device
+c)  Project - Targets, Groups, Files:  Add/Files, select Source Group1 and
+    add the source files.
+d)  Project - Options:  set all the tool options (the defaults are typically
+    good settings for first projects, just add the external memory devices
+    you are using).
+e)  Project - Rebuild all target files or Build target
+
+To debug the application:
+a)  Debug - Debugger:  start Debugger
+b)  Use Step toolbar buttons or enter in Output Window - Command:  G, main
+c)  You can open the Serial Window using the Toolbar "Serial #1" button.
+d)  Now you can debug your program with standard options: Step, Go, Break.
+
+
+3. On-line Manuals and Technical References
+
+Detailed information about using uVision2 and the Keil development tools can
+be found in the documents C51\HLP\GS51.PDF and C166\HLP\GS166.PDF.  For
+viewing this documents you have to install the Acrobat 4.0 Reader that is
+available on www.adobe.com.  Once you have selected a Device from the Device
+Database all related books are accessable in the Project Window - Books tab.
+
+
+4. Sales and Technical Support
+
+We at Keil Software are dedicated to providing you with the best development 
+tools and the best sales and technical support.  If you experience any problems 
+or have any questions about this product, contact one of our offices for assistance.
+
+In the USA...                           In Europe...
+
+KEIL Software, Inc.                     KEIL Elektronik GmbH
+16990 Dallas Parkway, Suite 120         Bretonischer Ring 15
+Dallas, Texas  75248-1903               D-85630 Grasbrunn, Germany
+
+Sales         (800) 348-8051            Sales   +49 89 456040-0
+Support       (972) 735-8051            Support +49 89 456040-24
+Fax           (972) 735-8055            Fax     +49 89 468162
+Email         sales.us@keil.com         Email   sales.intl@keil.com
+              support.us@keil.com               support.intl@keil.com
+
+                    INTERNET:   http://www.keil.com/
+
+                                   -O-

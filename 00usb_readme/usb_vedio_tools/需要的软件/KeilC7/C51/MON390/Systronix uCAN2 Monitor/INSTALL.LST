@@ -1,0 +1,455 @@
+AX51 MACRO ASSEMBLER  Configuration for MON390   (C) 2002 KEIL                              25/07/02 13:41:46 PAGE     1
+
+
+MACRO ASSEMBLER AX51 V1.30
+OBJECT MODULE PLACED IN INSTALL.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\AX51.EXE INSTALL.A51 MOD_CONT SET(SMALL) DEBUG EP
+
+LOC    OBJ             LINE     SOURCE
+
+                          1     $title  ('Configuration for MON390   (C) 2002 KEIL')
+                          2     ;------------------------------------------------------------------------------
+                          3     ;
+                          4     ;  MON390 CONFIGURATION FOR DALLAS CONTIGIOUS MODE
+                          5     ;  COPYRIGHT KEIL ELEKTRONIK GmbH 2001 - 2002                          *
+                          6     ;
+                          7     ;------------------------------------------------------------------------------
+                          8     ;
+                          9     ; Chip Specific Options (MCON needs to be set before ACON)
+                         10     ; ========================================================
+                         11     ;
+                         12     ; IDM1, IDM0:  Internal Data Memory Configuration Bits (MCON.7, MCON.6)
+ 0000                    13     IDM  EQU 0  ; 0 = 4KB on-chip SRAM location X:0x00F000 - X:0x00FFFF
+                         14     ;           ; 1 = 4KB on-chip SRAM location X:0x000000 - X:0x000FFF
+                         15     ;           ; 2 = 4KB on-chip SRAM location X:0x400000 - X:0x400FFF
+                         16     ;           ; 3 = 4KB on-chip SRAM location X:0x400000 - X:0x400FFF
+                         17     ;                 and code memory C:0x400000 - C:0x400FFF
+                         18     ;
+                         19     ; CMA: CAN Data Memory Assignment (MCON.5)
+ 0000                    20     CMA  EQU 0  ; 0 = CAN0 X:0x00EE00 - X:0x00EEFF, CAN1 X:0x00EF00 - X:0x00EFFF
+                         21                 ; 1 = CAN0 X:0x401000 - X:0x4010FF, CAN1 X:0x401100 - X:0x4011FF
+                         22     ;
+                         23     ;
+                         24     ; SA: Extend Stack Address Mode Enable (ACON.2)
+ 0000                    25     SA   EQU 0  ; 0 = 8051 compatible stack in IDATA memory
+                         26     ;           ; 1 = Use 1KB stack in on-chip XDATA space
+                         27     ;
+                         28     ;
+                         29     ; Port 4 Function Control (P4CNT)
+                         30     ; ===============================
+                         31     ; Port 4 Pin Function (P4CNT.2-0)
+ 0007                    32     P4PF EQU 7  ; 0 : all pin used as I/O pin (P4.0 - P4.3)
+                         33     ;           ; 4 : P4.0 is CE0
+                         34     ;           ; 5 : P4.0 is CE0, P4.1 is CE1
+                         35     ;           ; 6 : P4.0 is CE0, P4.1 is CE1, P4.2 is CE2
+                         36     ;           ; 7 : P4.0 is CE0, P4.1 is CE1, P4.2 is CE2, P4.3 is CE3
+                         37     ;
+                         38     ; Program Memory Chip Enable Window Size (P4CNT.5-3)
+ 0006                    39     PCES EQU 6  ; 0 = 32KB  address window (0 - 0x7FFF)
+                         40     ;           ; 4 = 128KB address window (0 - 0x1FFFF)
+                         41     ;           ; 5 = 256KB address window (0 - 0x3FFFF)
+                         42     ;           ; 6 = 512KB address window (0 - 0x7FFFF)
+                         43     ;           ; 7 = 1MB   address window (0 - 0xFFFFF)
+                         44     ;
+                         45     ; PDCE3 .. PDCE0: Program/Data Chip Enable (MCON.3, MCON.2, MCON.1, MCON.0)
+                         46     ; refer to the Dallas Data Sheet for more information
+ 0000                    47     PDCE3 EQU 0
+ 0000                    48     PDCE2 EQU 0
+ 0000                    49     PDCE1 EQU 0
+ 0001                    50     PDCE0 EQU 1
+                         51     ;
+                         52     ;
+                         53     ;------------------------------------------------------------------------------
+                         54     ;  Serial interface settings
+                         55     ;
+                         56     $set  (SERIAL = 0)       ; 0 = use SERIAL PORT0 for Monitor Communcation
+                         57                             ; 1 = use SERIAL PORT1 for Monitor Communcation
+                         58     ;
+AX51 MACRO ASSEMBLER  Configuration for MON390   (C) 2002 KEIL                              25/07/02 13:41:46 PAGE     2
+
+                         59     ;------------------------------------------------------------------------------
+                         60     ;  Memory Mapping
+                         61     ;
+                         62     ; Monitor Code and Data Memory
+ 0000                    63     MON_CODE_START  EQU     0000000H  ; start address of Monitor code area in CODE memory
+ 0001FFE0                64     MON_RAM_START   EQU     001FFE0H  ; start address of Monitor data area in XDATA memory
+                         65     
+                         66     ; User Code Memory (von-Neumann mapped)
+ 1000                    67     CODE_RAM_START  EQU     0001000H  ; start address of user CODE space in XDATA memory
+                         68                                       ; (von Neumann mapping)
+ 1000                    69     INT_ADR_OFF     EQU     0001000H  ; Interrupt Vector Offset if MON390 is installed at 
+                         70                                       ; address 0000H
+ 0001EFFF                71     CODE_RAM_END    EQU     001EFFFH  ; end address of user CODE space in XDATA memory
+                         72     
+                         73     ;------------------------------------------------------------------------------
+                         74     
+                         75     NAME    CONFIG
+                         76     
+                         77     PUBLIC  RECEIVEBYTE         ; CHARACTER INPUT-ROUTINE 
+                         78     PUBLIC  SENDBYTE            ; CHARACTER OUTPUT-ROUTINE 
+                         79     PUBLIC  SENDCHECK           ; CHECK OUTPUT STATUS OF SERIAL INTERFACE
+                         80     PUBLIC  SERINT_ENABLE       ; ENABLE SERIAL INTERRUPT
+                         81     PUBLIC  SERINT_DISABLE      ; DISABLE SERIAL INTERRUPT
+                         82     PUBLIC  IDENT_STRING        ; IDENTIFIER STRING
+                         83     PUBLIC  INT_ADR_OFF         ; OFFSET FOR INTERRUPT VECTORS
+                         84     PUBLIC  SER_INT_OFF         ; ADDRESS OFFSET OF SERIAL INTERRUPT VECTOR
+                         85     PUBLIC  CODE_RAM_START      ; USER CODE START
+                         86     PUBLIC  CODE_RAM_END        ; USER CODE END
+                         87     PUBLIC  MON_CODE_START      ; MON390 CODE START
+                         88     PUBLIC  BEFORE_GO           ; DO SOME THINGS BEFORE STARTING USER PROGRAM
+                         89     PUBLIC  AFTER_GO            ; DO SOME THINGS AFTER TERMINATION OF USER PROGRAM
+                         90     PUBLIC  WR_CODE             ; WRITE CODE BYTE
+                         91     
+                         92     EXTRN ECODE:FAR (MONSTART)    ; START OF MONITOR-51
+                         93     EXTRN ECODE:FAR (MONBREAK)    ; BREAK RESTART OF MONITOR-251  
+                         94     EXTRN ECODE:FAR (SERBREAK)    ; SERIAL INTERRUPT ENTRY OF MONITOR-251
+                         95     
+                         96     SINTENABLE      LIT     '(MONDATA+ 30)'
+                         97     
+                         98     ; SFR SYMBOLS
+ 0089                    99     TMOD    DATA    89H
+ 008D                   100     TH1     DATA    8DH
+ 0098                   101     SCON0   DATA    98H
+ 008E                   102     CKCON   DATA    8EH
+ 0088                   103     TCON    DATA    88H
+ 0088.6                 104     TR1     BIT     8EH
+ 0099                   105     SBUF    DATA    99H
+ 0098.1                 106     TI      BIT     99H
+ 0098.0                 107     RI      BIT     98H
+ 00E0                   108     ACC     DATA    0E0H
+ 00A8.4                 109     ES      BIT     0ACH
+ 00A8.0                 110     EX0     BIT     0A8H
+ 00D1                   111     PSW1    DATA    0D1H
+ 0087                   112     PCON    DATA    087H
+ 00A8.7                 113     EA      BIT     0AFH
+ 00B7                   114     IPH0    DATA    0B7H
+ 00B8                   115     IPL0    DATA    0B8H
+ 0090                   116     P1      DATA    090H
+  009D                  117     sfr     ACON  = 0x9D
+  00C7                  118     sfr     TA    = 0xC7
+  00C6                  119     sfr     MCON  = 0xC6
+  0092                  120     sfr     P4CNT = 0x92    
+                        121     
+                        122     FILLGAP         MACRO
+                        123                     NOP
+                        124                     NOP
+AX51 MACRO ASSEMBLER  Configuration for MON390   (C) 2002 KEIL                              25/07/02 13:41:46 PAGE     3
+
+                        125                     NOP
+                        126                     NOP
+                        127                     ENDM
+                        128     
+                        129     
+000000                  130     ?PR?INITSEG     SEGMENT ECODE AT MON_CODE_START
+------                  131                     RSEG    ?PR?INITSEG
+                        132     
+000000 02               133                     DB      02H                   ; LJMP in Classic 8051 Mode
+000001 0000       F     134                     DW      WORD0 STARTUP1
+000003 02000000   F     135                     LJMP    INT_ADR_OFF + 03H
+                        136+1                   FILLGAP
+00000B 02000000   F     141                     LJMP    INT_ADR_OFF + 0BH
+                        142+1                   FILLGAP
+000013 02000000   F     147                     LJMP    INT_ADR_OFF + 13H
+                        148+1                   FILLGAP
+00001B 02000000   F     153                     LJMP    INT_ADR_OFF + 1BH
+                        154+1                   FILLGAP
+                        159     $if  (SERIAL = 0 OR SERIAL = 1 OR SERIAL = 2)
+ 0023                   160     SER_INT_OFF     EQU     23H                     ; OFFSET OF SERIAL INTERRUPT VECTOR
+000023 02000000   E     161                     LJMP    SERBREAK                ; On-chip UART Device Interrupt
+                        162     $else 
+                                                LJMP    INT_ADR_OFF + 23H
+                                $endif 
+                        165+1                   FILLGAP
+00002B 02000000   F     170                     LJMP    INT_ADR_OFF + 2BH
+                        171+1                   FILLGAP
+000033 02000000   F     176                     LJMP    INT_ADR_OFF + 33H
+                        177+1                   FILLGAP
+00003B 02000000   F     182                     LJMP    INT_ADR_OFF + 3BH
+                        183+1                   FILLGAP
+000043 02000000   F     188                     LJMP    INT_ADR_OFF + 43H
+                        189+1                   FILLGAP
+00004B 02000000   F     194                     LJMP    INT_ADR_OFF + 4BH
+                        195+1                   FILLGAP
+000053 02000000   F     200                     LJMP    INT_ADR_OFF + 53H
+                        201+1                   FILLGAP
+00005B 02000000   F     206                     LJMP    INT_ADR_OFF + 5BH
+                        207+1                   FILLGAP
+000063 02000000   F     212                     LJMP    INT_ADR_OFF + 63H
+                        213+1                   FILLGAP
+00006B 02000000   F     218                     LJMP    INT_ADR_OFF + 6BH
+                        219+1                   FILLGAP
+000073 02000000   F     224                     LJMP    INT_ADR_OFF + 73H
+                        225+1                   FILLGAP
+00007B 02000000   F     230                     LJMP    INT_ADR_OFF + 7BH
+                        231+1                   FILLGAP
+000083 02000000   F     236                     LJMP    INT_ADR_OFF + 83H
+                        237+1                   FILLGAP
+00008B 02000000   F     242                     LJMP    INT_ADR_OFF + 8BH
+                        243+1                   FILLGAP
+000093 02000000   F     248                     LJMP    INT_ADR_OFF + 93H
+                        249+1                   FILLGAP
+00009B 02000000   F     254                     LJMP    INT_ADR_OFF + 9BH
+                        255+1                   FILLGAP
+0000A3 02000000   F     260                     LJMP    INT_ADR_OFF + 0A3H
+                        261+1                   FILLGAP
+0000AB 02000000   F     266                     LJMP    INT_ADR_OFF + 0ABH
+                        267+1                   FILLGAP
+0000B3 02000000   F     272                     LJMP    INT_ADR_OFF + 0B3H
+                        273+1                   FILLGAP
+0000BB 02000000   F     278                     LJMP    INT_ADR_OFF + 0BBH
+                        279+1                   FILLGAP
+0000C3 02000000   F     284                     LJMP    INT_ADR_OFF + 0C3H
+                        285+1                   FILLGAP
+0000CB 02000000   F     290                     LJMP    INT_ADR_OFF + 0CBH
+AX51 MACRO ASSEMBLER  Configuration for MON390   (C) 2002 KEIL                              25/07/02 13:41:46 PAGE     4
+
+                        291+1                   FILLGAP
+0000D3 02000000   F     296                     LJMP    INT_ADR_OFF + 0D3H
+                        297+1                   FILLGAP
+0000DB 02000000   F     302                     LJMP    INT_ADR_OFF + 0DBH
+                        303+1                   FILLGAP
+0000E3 02000000   F     308                     LJMP    INT_ADR_OFF + 0E3H
+                        309+1                   FILLGAP
+0000EB 02000000   F     314                     LJMP    INT_ADR_OFF + 0F3H
+                        315+1                   FILLGAP
+0000F3 02000000   F     320                     LJMP    INT_ADR_OFF + 0FBH
+                        321     
+                        322                     
+0000F7 75C7AA           323     STARTUP1:       MOV     TA,#0xAA        ; Enable access to MCON
+0000FA 75C755           324                     MOV     TA,#0x55
+ 0000                   325     MCON_VAL SET (IDM SHL 6) OR (CMA SHL 5) OR (PDCE3 SHL 3) OR (PDCE2 SHL 2)
+ 0001                   326     MCON_VAL SET MCON_VAL OR (PDCE1 SHL 1) OR (PDCE0)
+0000FD 75C601           327                     MOV     MCON,#MCON_VAL
+                        328     
+000100 75C7AA           329                     MOV     TA,#0xAA        ; Enable access to ACON
+000103 75C755           330                     MOV     TA,#0x55
+ 0002                   331     ACON_VAL EQU (2 OR (SA SHL 2)) ; 22-bit contigious mode, SA bit
+000106 759D02           332                     MOV     ACON,#ACON_VAL
+                        333     
+                        334     ; Set Port 4 Function Control (P4CNT)
+ 0037                   335     P4_VAL   EQU P4PF OR (PCES SHL 3)
+000109 759237           336                     MOV     P4CNT,#P4_VAL
+                        337      
+00010C 7800             338     MonitorStart:   MOV     R0,#0           ;Der Monitor meldet sich mit `n 
+00010E 7900             339                     MOV     R1,#0
+000110 7401             340                     MOV     A,#01H
+000112 F590             341     Flashloop:      MOV     P1,A
+000114 23               342                     RL      A
+000115 00               343     FWait_State:    NOP
+000116 00               344                     NOP
+000117 00               345                     NOP
+000118 D8FB             346                     DJNZ    R0,FWait_State
+00011A D9F9             347                     DJNZ    R1,FWait_State
+00011C 23               348                     RL      A
+00011D 25E0             349                     ADD     A,ACC
+00011F 70F1             350                     JNZ     Flashloop
+000121 7590FF           351                     MOV     P1,#0FFH
+                        352     
+                        353     
+                        354     
+                        355     
+                        356     
+000124 02000000   F     357                     LJMP    InitSerial
+                        358     
+                        359     ;---- Setup for Serial Interfaces.
+                        360     
+                        361     $if  (SERIAL = 0)
+                        362     ;********************************************************************
+                        363     ;*  Using TIMER 1 to Generate Baud Rates                            *
+                        364     ;*  Oscillator frequency = 40.000 MHz                               *
+                        365     ;*  Set Baudrate to 38400 Baud                                       *
+                        366     ;********************************************************************
+                        367     
+000128 438780           368     InitSerial:     ORL     PCON, #080H
+00012B 759850           369                     MOV     SCON0,#050H                      
+00012E 438921           370                     ORL     TMOD, #021H           
+000131 758DF8           371                     MOV     TH1,  #0F8H   
+000134 438E10           372                     ORL     CKCON,#010H
+000137 758850           373                     MOV     TCON, #050H              
+00013A 439802           374                     ORL     SCON0,#002H   
+                        375     
+00013D 02000000   E     376                     JMP     MONSTART
+AX51 MACRO ASSEMBLER  Configuration for MON390   (C) 2002 KEIL                              25/07/02 13:41:46 PAGE     5
+
+000141 4D4F4E49         377     IDENT_STRING:   DB       'MONITOR-390 USING TIMER 1 FOR BAUDRATES',0
+000145 544F522D                 
+000149 33393020                 
+00014D 5553494E                 
+000151 47205449                 
+000155 4D455220                 
+000159 3120464F                 
+00015D 52204241                 
+000161 55445241                 
+000165 54455300                 
+                        378     
+                        379     $endif 
+                        380     
+                        381     $if  (SERIAL = 1)
+                                ;********************************************************************
+                                ;*  Using TIMER 2 to Generate Baud Rates                            *
+                                ;********************************************************************
+                                RCAP2L  DATA    0CAH
+                                RCAP2H  DATA    0CBH
+                                T2CON   DATA    0C8H
+                                
+                                RCAPVAL EQU  (65536 - ((XTAL / BAUDRATE)/16))
+                                
+                                InitSerial:     LABEL   FAR
+                                                LJMP    Next
+                                Next:           MOV     T2CON,#30H
+                                                MOV     RCAP2H,#HIGH (RCAPVAL)
+                                                MOV     RCAP2L,#LOW (RCAPVAL)
+                                                SETB    T2CON.2         ; start timer
+                                                MOV     SCON,#01011010B ; Init Serial Interface
+                                                LJMP    MONSTART
+                                
+                                IDENT_STRING:   DB      'MONITOR-390 USING TIMER 2 FOR BAUDRATES',0
+                                $endif 
+                        402     
+                        403     $if  (SERIAL = 0 OR SERIAL = 1)
+                        404     ;********************************************************************
+                        405     ;*  Interface via standard on-chip UART                             *
+                        406     ;********************************************************************
+                        407     
+                        408     SENDBYTE        PROC    NEAR
+000169 439001           409                     ORL     P1,#1
+00016C C299             410                     CLR     TI              ; Only A & PSW can be destroyed!
+00016E F599             411                     MOV     SBUF,A
+000170 439001           412                     ORL     P1,#1
+000173 22               413                     RET
+                        414                     ENDP
+                        415     
+                        416     SENDCHECK       PROC    NEAR
+000174 3099FD           417                     JNB     TI,$            ; Only A & PSW can be destroyed!
+000177 22               418                     RET
+                        419                     ENDP
+                        420     
+                        421     RECEIVEBYTE     PROC    NEAR
+000178 439002           422                     ORL     P1,#2   
+00017B 3098FD           423                     JNB     RI,$            ; Only A & PSW can be destroyed!
+00017E E599             424                     MOV     A,SBUF
+000180 C298             425                     CLR     RI
+000182 439002           426                     ORL     P1,#2
+000185 22               427                     RET
+                        428                     ENDP
+                        429     
+                        430     SERINT_ENABLE   PROC    NEAR
+000186 C299             431                     CLR     TI              ; No Transmitter Interrupt yet
+000188 D2AC             432                     SETB    ES              ; Enable Serial Interrupt
+00018A 22               433                     RET
+AX51 MACRO ASSEMBLER  Configuration for MON390   (C) 2002 KEIL                              25/07/02 13:41:46 PAGE     6
+
+                        434                     ENDP
+                        435     
+                        436     SERINT_DISABLE  PROC    NEAR
+00018B C2AC             437                     CLR     ES              ; Disable Serial Interrupt
+00018D D299             438                     SETB    TI              ; Set Transmitter Interrupt Flag
+00018F 22               439                     RET
+                        440                     ENDP
+                        441     
+                        442     
+                        443     $endif 
+                        444     
+                        445     ;-----------------------------------------------------------------------------
+                        446     
+000190                  447     BEFORE_GO:                               ; this code is executed before a
+000190 22               448                     RET                      ; a go or proc step is executed
+                        449     
+000191                  450     AFTER_GO:                                ; this code is executed after a go
+000191 22               451                     RET                      ; command (when a breakpoint was set)
+                        452     
+000192 F0               453     WR_CODE:        MOVX    @DPTR,A          ; insert different code here, but
+000193 22               454                     RET                      ; do not change any other register
+                        455                                              ; without saving it
+                        456     
+                        457     ;-----------------------------------------------------------------------------
+                        458     
+                        459     
+                        460     
+                        461     PUBLIC  MONDATA
+01FFE0                  462     ?FD?MON_DATA    SEGMENT HDATA  AT MON_RAM_START
+------                  463                     RSEG    ?FD?MON_DATA
+01FFE0                  464     MONDATA:        DS      32              ; Monitor data area; DO NOT CHANGE SIZE
+ 0001FFE0               465     MONDATA_CODE    EQU MON_RAM_START
+                        466     PUBLIC  MONDATA_CODE
+                        467                     END
+                        468     
+AX51 MACRO ASSEMBLER  Configuration for MON390   (C) 2002 KEIL                              25/07/02 13:41:46 PAGE     7
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                      T Y P E  V A L U E     ATTRIBUTES
+
+?FD?MON_DATA. . . . . . . .  HD SEG   020000H       REL=ABS, ALN=BYTE
+?PR?INITSEG . . . . . . . .  EC SEG   000194H       REL=ABS, ALN=BYTE
+ACC . . . . . . . . . . . .  D  ADDR  00E0H     A   
+ACON. . . . . . . . . . . .  D  ADDR  009DH     A   
+ACON_VAL. . . . . . . . . .  HC ADDR  0002H     A   
+AFTER_GO. . . . . . . . . .  EC ADDR  0191H     R   SEG=?PR?INITSEG
+BEFORE_GO . . . . . . . . .  EC ADDR  0190H     R   SEG=?PR?INITSEG
+CKCON . . . . . . . . . . .  D  ADDR  008EH     A   
+CMA . . . . . . . . . . . .  HC ADDR  0000H     A   
+CODE_RAM_END. . . . . . . .  HC ADDR  0001EFFFH A   
+CODE_RAM_START. . . . . . .  HC ADDR  1000H     A   
+CONFIG. . . . . . . . . . .  -- ----  -------       
+EA. . . . . . . . . . . . .  B  ADDR  00A8H.7   A   
+ES. . . . . . . . . . . . .  B  ADDR  00A8H.4   A   
+EX0 . . . . . . . . . . . .  B  ADDR  00A8H.0   A   
+FLASHLOOP . . . . . . . . .  EC ADDR  0112H     R   SEG=?PR?INITSEG
+FWAIT_STATE . . . . . . . .  EC ADDR  0115H     R   SEG=?PR?INITSEG
+IDENT_STRING. . . . . . . .  EC ADDR  0141H     R   SEG=?PR?INITSEG
+IDM . . . . . . . . . . . .  HC ADDR  0000H     A   
+INITSERIAL. . . . . . . . .  EC ADDR  0128H     R   SEG=?PR?INITSEG
+INT_ADR_OFF . . . . . . . .  HC ADDR  1000H     A   
+IPH0. . . . . . . . . . . .  D  ADDR  00B7H     A   
+IPL0. . . . . . . . . . . .  D  ADDR  00B8H     A   
+MCON. . . . . . . . . . . .  D  ADDR  00C6H     A   
+MCON_VAL. . . . . . . . . .  HC ADDR  0001H     A   
+MON_CODE_START. . . . . . .  HC ADDR  0000H     A   
+MON_RAM_START . . . . . . .  HC ADDR  0001FFE0H A   
+MONBREAK. . . . . . . . . .  EC ADDR  -------       EXT
+MONDATA . . . . . . . . . .  HD ADDR  0001FFE0H R   SEG=?FD?MON_DATA
+MONDATA_CODE. . . . . . . .  HC ADDR  0001FFE0H A   
+MONITORSTART. . . . . . . .  EC ADDR  010CH     R   SEG=?PR?INITSEG
+MONSTART. . . . . . . . . .  EC ADDR  -------       EXT
+P1. . . . . . . . . . . . .  D  ADDR  0090H     A   
+P4_VAL. . . . . . . . . . .  HC ADDR  0037H     A   
+P4CNT . . . . . . . . . . .  D  ADDR  0092H     A   
+P4PF. . . . . . . . . . . .  HC ADDR  0007H     A   
+PCES. . . . . . . . . . . .  HC ADDR  0006H     A   
+PCON. . . . . . . . . . . .  D  ADDR  0087H     A   
+PDCE0 . . . . . . . . . . .  HC ADDR  0001H     A   
+PDCE1 . . . . . . . . . . .  HC ADDR  0000H     A   
+PDCE2 . . . . . . . . . . .  HC ADDR  0000H     A   
+PDCE3 . . . . . . . . . . .  HC ADDR  0000H     A   
+PSW1. . . . . . . . . . . .  D  ADDR  00D1H     A   
+RECEIVEBYTE . . . . . . . .  EC ADDR  0178H     R   SEG=?PR?INITSEG
+RI. . . . . . . . . . . . .  B  ADDR  0098H.0   A   
+SA. . . . . . . . . . . . .  HC ADDR  0000H     A   
+SBUF. . . . . . . . . . . .  D  ADDR  0099H     A   
+SCON0 . . . . . . . . . . .  D  ADDR  0098H     A   
+SENDBYTE. . . . . . . . . .  EC ADDR  0169H     R   SEG=?PR?INITSEG
+SENDCHECK . . . . . . . . .  EC ADDR  0174H     R   SEG=?PR?INITSEG
+SER_INT_OFF . . . . . . . .  HC ADDR  0023H     A   
+SERBREAK. . . . . . . . . .  EC ADDR  -------       EXT
+SERINT_DISABLE. . . . . . .  EC ADDR  018BH     R   SEG=?PR?INITSEG
+SERINT_ENABLE . . . . . . .  EC ADDR  0186H     R   SEG=?PR?INITSEG
+SINTENABLE. . . . . . . . .  -- ----  -------       
+STARTUP1. . . . . . . . . .  EC ADDR  00F7H     R   SEG=?PR?INITSEG
+TA. . . . . . . . . . . . .  D  ADDR  00C7H     A   
+TCON. . . . . . . . . . . .  D  ADDR  0088H     A   
+TH1 . . . . . . . . . . . .  D  ADDR  008DH     A   
+TI. . . . . . . . . . . . .  B  ADDR  0098H.1   A   
+AX51 MACRO ASSEMBLER  Configuration for MON390   (C) 2002 KEIL                              25/07/02 13:41:46 PAGE     8
+
+TMOD. . . . . . . . . . . .  D  ADDR  0089H     A   
+TR1 . . . . . . . . . . . .  B  ADDR  0088H.6   A   
+WR_CODE . . . . . . . . . .  EC ADDR  0192H     R   SEG=?PR?INITSEG
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S).

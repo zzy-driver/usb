@@ -1,0 +1,758 @@
+BL51 BANKED LINKER/LOCATER V6.05                                                        02/27/2008  20:30:12  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.05, INVOKED BY:
+D:\DEV\KEILC\C51\BIN\BL51.EXE Des.obj TO des
+
+
+MEMORY MODEL: LARGE
+
+
+INPUT MODULES INCLUDED:
+  Des.obj (DES)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C_STARTUP)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?COPY)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?CLDPTR)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?CLDOPTR)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?CSTPTR)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?SIDIV)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?IILDX)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?ILDIX)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?ULSHR)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LSHL)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LLDPTR)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LLDOPTR)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LSTPTR)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LLDPTR0)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LSTXDATA)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LSTKXDATA)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?OFFXADD)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (PRINTF)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C_INIT)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?UIDIV)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LLDIDATA)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LLDXDATA)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LLDPDATA)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LLDCODE)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LLDIDATA0)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LLDXDATA0)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LLDPDATA0)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LLDCODE0)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LSTIDATA)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?LSTPDATA)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?PLDIXDATA)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?PSTXDATA)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (?C?CCASE)
+  D:\DEV\KEILC\C51\LIB\C51L.LIB (PUTCHAR)
+
+
+LINK MAP OF MODULE:  des (DES)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0005H     UNIT         _DATA_GROUP_
+                    000DH     0013H                  *** GAP ***
+            BIT     0020H.0   0001H.1   UNIT         _BIT_GROUP_
+                    0021H.1   0000H.7                *** GAP ***
+            IDATA   0022H     0001H     UNIT         ?STACK
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/27/2008  20:30:12  PAGE 2
+
+
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0A80H     UNIT         ?XD?DES
+            XDATA   0A80H     02D3H     UNIT         _XDATA_GROUP_
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0AC2H     UNIT         ?C_INITSEG
+            CODE    0AC5H     058DH     UNIT         ?PR?_DESFUNC?DES
+            CODE    1052H     03DFH     UNIT         ?PR?DES
+            CODE    1431H     03C6H     UNIT         ?C?LIB_CODE
+            CODE    17F7H     0365H     UNIT         ?PR?PRINTF?PRINTF
+            CODE    1B5CH     0264H     UNIT         ?PR?_DESKEY?DES
+            CODE    1DC0H     0201H     UNIT         ?PR?MAIN?DES
+            CODE    1FC1H     01E1H     UNIT         ?PR?_COOKEY?DES
+            CODE    21A2H     0148H     UNIT         ?PR?_SCRUNCH?DES
+            CODE    22EAH     008CH     UNIT         ?C_C51STARTUP
+            CODE    2376H     0089H     UNIT         ?PR?_DES_DEC?DES
+            CODE    23FFH     0088H     UNIT         ?PR?_DES_ENC?DES
+            CODE    2487H     0058H     UNIT         ?CO?DES
+            CODE    24DFH     004CH     UNIT         ?PR?_UNSCRUN?DES
+            CODE    252BH     003FH     UNIT         ?PR?_CPKEY?DES
+            CODE    256AH     003FH     UNIT         ?PR?_USEKEY?DES
+            CODE    25A9H     0035H     UNIT         ?PR?_DES_KEY?DES
+            CODE    25DEH     0027H     UNIT         ?PR?PUTCHAR?PUTCHAR
+
+
+
+OVERLAY MAP OF MODULE:   des (DES)
+
+
+SEGMENT                           BIT_GROUP          DATA_GROUP          XDATA_GROUP
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH     START    LENGTH
+--------------------------------------------------------------------------------------
+?C_C51STARTUP                  -----    -----      -----    -----      -----    -----
+  +--> ?PR?MAIN?DES
+  +--> ?C_INITSEG
+
+?PR?MAIN?DES                   -----    -----      -----    -----      0A80H    013DH
+  +--> ?CO?DES
+  +--> ?PR?DES
+  +--> ?PR?_DES_KEY?DES
+  +--> ?PR?_DES_ENC?DES
+  +--> ?PR?_DES_DEC?DES
+  +--> ?PR?PRINTF?PRINTF
+
+?PR?_DES_KEY?DES               -----    -----      -----    -----      0BBDH    0006H
+  +--> ?PR?DES
+  +--> ?PR?_DESKEY?DES
+  +--> ?PR?_CPKEY?DES
+
+?PR?_DESKEY?DES                -----    -----      -----    -----      0BC3H    00FCH
+  +--> ?PR?DES
+  +--> ?PR?_COOKEY?DES
+
+?PR?_COOKEY?DES                -----    -----      -----    -----      0CBFH    008BH
+  +--> ?PR?DES
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/27/2008  20:30:12  PAGE 3
+
+
+  +--> ?PR?_USEKEY?DES
+
+?PR?_USEKEY?DES                -----    -----      -----    -----      0D4AH    0009H
+  +--> ?PR?DES
+
+?PR?_CPKEY?DES                 -----    -----      -----    -----      0BC3H    0009H
+  +--> ?PR?DES
+
+?PR?_DES_ENC?DES               -----    -----      -----    -----      0BBDH    0015H
+  +--> ?PR?DES
+  +--> ?PR?_SCRUNCH?DES
+  +--> ?PR?_DESFUNC?DES
+  +--> ?PR?_UNSCRUN?DES
+
+?PR?_SCRUNCH?DES               -----    -----      -----    -----      0BD2H    0006H
+  +--> ?PR?DES
+
+?PR?_DESFUNC?DES               -----    -----      -----    -----      0BD2H    0018H
+  +--> ?PR?DES
+
+?PR?_UNSCRUN?DES               -----    -----      -----    -----      0BD2H    0006H
+  +--> ?PR?DES
+
+?PR?_DES_DEC?DES               -----    -----      -----    -----      0BBDH    0015H
+  +--> ?PR?DES
+  +--> ?PR?_SCRUNCH?DES
+  +--> ?PR?_DESFUNC?DES
+  +--> ?PR?_UNSCRUN?DES
+
+?PR?PRINTF?PRINTF              0020H.0  0001H.1    0008H    0005H      0BBDH    0028H
+  +--> ?PR?PUTCHAR?PUTCHAR
+
+
+
+SYMBOL TABLE OF MODULE:  des (DES)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DES
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  X:0000H         PUBLIC        pc1
+  X:0038H         PUBLIC        pc2
+  X:0068H         PUBLIC        KnL
+  C:1B5CH         PUBLIC        _deskey
+  X:00E8H         SYMBOL        KnR
+  C:1FC1H         SYMBOL        _cookey
+  C:24DFH         SYMBOL        _unscrun
+  C:256AH         PUBLIC        _usekey
+  B:0098H.1       PUBLIC        TI
+  C:252BH         PUBLIC        _cpkey
+  C:1DC0H         PUBLIC        main
+  X:0168H         SYMBOL        totrot
+  D:0098H         PUBLIC        SCON
+  X:0178H         SYMBOL        Df_Key
+  D:0089H         PUBLIC        TMOD
+  C:24CFH         SYMBOL        _?ix1000
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/27/2008  20:30:12  PAGE 4
+
+
+  C:24D7H         SYMBOL        _?ix1001
+  C:2376H         PUBLIC        _des_dec
+  D:008DH         PUBLIC        TH1
+  X:0190H         SYMBOL        SP1
+  C:23FFH         PUBLIC        _des_enc
+  X:0290H         SYMBOL        SP2
+  X:0390H         SYMBOL        SP3
+  X:0490H         SYMBOL        SP4
+  B:0088H.6       PUBLIC        TR1
+  X:0590H         SYMBOL        SP5
+  X:0690H         SYMBOL        SP6
+  X:0790H         SYMBOL        SP7
+  X:0890H         SYMBOL        SP8
+  C:25A9H         PUBLIC        _des_key
+  X:0990H         SYMBOL        bigbyte
+  X:09F0H         SYMBOL        Kn3
+  C:0AC5H         SYMBOL        _desfunc
+  X:0A70H         SYMBOL        bytebit
+  C:21A2H         SYMBOL        _scrunch
+  C:1052H         SYMBOL        Com0062
+  C:1052H         SYMBOL        L?0099
+  C:10E8H         SYMBOL        L?0100
+  C:10E9H         SYMBOL        L?0101
+  C:10ECH         SYMBOL        L?0102
+  C:10EFH         SYMBOL        L?0103
+  C:10FBH         SYMBOL        L?0104
+  C:1103H         SYMBOL        L?0105
+  C:1107H         SYMBOL        L?0106
+  C:1115H         SYMBOL        L?0107
+  C:1117H         SYMBOL        L?0108
+  C:1119H         SYMBOL        L?0109
+  C:111AH         SYMBOL        L?0110
+  C:1122H         SYMBOL        L?0111
+  C:1159H         SYMBOL        L?0112
+  C:1173H         SYMBOL        L?0113
+  C:1175H         SYMBOL        L?0114
+  C:117CH         SYMBOL        L?0115
+  C:117CH         SYMBOL        L?0116
+  C:117EH         SYMBOL        L?0117
+  C:1189H         SYMBOL        L?0118
+  C:118FH         SYMBOL        L?0119
+  C:1192H         SYMBOL        L?0120
+  C:1195H         SYMBOL        L?0121
+  C:1199H         SYMBOL        L?0122
+  C:11A0H         SYMBOL        L?0123
+  C:11A0H         SYMBOL        L?0124
+  C:11A1H         SYMBOL        L?0125
+  C:11AEH         SYMBOL        L?0126
+  C:11AEH         SYMBOL        L?0127
+  C:11AFH         SYMBOL        L?0128
+  C:11BBH         SYMBOL        L?0129
+  C:11BFH         SYMBOL        L?0130
+  C:11C0H         SYMBOL        L?0131
+  C:11C8H         SYMBOL        L?0132
+  C:11D4H         SYMBOL        L?0133
+  C:11D7H         SYMBOL        L?0134
+  C:11DEH         SYMBOL        L?0135
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/27/2008  20:30:12  PAGE 5
+
+
+  C:11EEH         SYMBOL        L?0136
+  C:11F1H         SYMBOL        L?0137
+  C:1202H         SYMBOL        L?0138
+  C:1202H         SYMBOL        L?0139
+  C:1205H         SYMBOL        L?0140
+  C:120CH         SYMBOL        L?0141
+  C:1211H         SYMBOL        L?0142
+  C:1216H         SYMBOL        L?0143
+  C:1222H         SYMBOL        L?0144
+  C:1222H         SYMBOL        L?0145
+  C:1225H         SYMBOL        L?0146
+  C:122DH         SYMBOL        L?0148
+  C:122DH         SYMBOL        L?0149
+  C:122FH         SYMBOL        L?0150
+  C:1237H         SYMBOL        L?0151
+  C:1237H         SYMBOL        L?0152
+  C:123AH         SYMBOL        L?0153
+  C:1241H         SYMBOL        L?0154
+  C:1264H         SYMBOL        L?0155
+  C:1267H         SYMBOL        L?0156
+  C:126AH         SYMBOL        L?0157
+  C:1273H         SYMBOL        L?0159
+  C:1290H         SYMBOL        L?0160
+  C:12A9H         SYMBOL        L?0162
+  C:12C1H         SYMBOL        L?0163
+  C:12C1H         SYMBOL        L?0164
+  C:12CBH         SYMBOL        L?0165
+  C:12DFH         SYMBOL        L?0166
+  C:12F3H         SYMBOL        L?0167
+  C:12F3H         SYMBOL        L?0168
+  C:12FFH         SYMBOL        L?0169
+  C:1302H         SYMBOL        L?0170
+  C:1309H         SYMBOL        L?0171
+  C:1309H         SYMBOL        L?0172
+  C:1310H         SYMBOL        L?0173
+  C:1310H         SYMBOL        L?0174
+  C:1317H         SYMBOL        L?0175
+  C:1328H         SYMBOL        L?0176
+  C:1339H         SYMBOL        L?0177
+  C:1339H         SYMBOL        L?0178
+  C:1341H         SYMBOL        L?0179
+  C:1351H         SYMBOL        L?0180
+  C:1360H         SYMBOL        L?0181
+  C:136FH         SYMBOL        L?0182
+  C:137DH         SYMBOL        L?0183
+  C:137EH         SYMBOL        L?0184
+  C:1386H         SYMBOL        L?0185
+  C:1386H         SYMBOL        L?0186
+  C:138DH         SYMBOL        L?0187
+  C:138DH         SYMBOL        L?0188
+  C:1394H         SYMBOL        L?0189
+  C:13A1H         SYMBOL        L?0190
+  C:13AEH         SYMBOL        L?0191
+  C:13AEH         SYMBOL        L?0192
+  C:13B5H         SYMBOL        L?0193
+  C:13C2H         SYMBOL        L?0194
+  C:13C5H         SYMBOL        L?0195
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/27/2008  20:30:12  PAGE 6
+
+
+  C:13CCH         SYMBOL        L?0197
+  C:13CCH         SYMBOL        L?0198
+  C:13D4H         SYMBOL        L?0199
+  C:13E0H         SYMBOL        L?0200
+  C:13E0H         SYMBOL        L?0201
+  C:13E8H         SYMBOL        L?0202
+  C:13F3H         SYMBOL        L?0203
+  C:13F3H         SYMBOL        L?0204
+  C:13FBH         SYMBOL        L?0205
+  C:13FBH         SYMBOL        L?0206
+  C:1402H         SYMBOL        L?0207
+  C:140CH         SYMBOL        L?0208
+  C:1416H         SYMBOL        L?0209
+  C:1420H         SYMBOL        L?0210
+  C:142AH         SYMBOL        L?0211
+  C:142AH         SYMBOL        L?0212
+  -------         PROC          COM0062
+  -------         ENDPROC       COM0062
+  -------         PROC          _DESKEY
+  D:0001H         SYMBOL        key
+  X:0BC3H         SYMBOL        edf
+  -------         DO            
+  X:0BC5H         SYMBOL        i
+  X:0BC7H         SYMBOL        j
+  X:0BC9H         SYMBOL        l
+  X:0BCBH         SYMBOL        m
+  X:0BCDH         SYMBOL        n
+  X:0BCFH         SYMBOL        pc1m
+  X:0C07H         SYMBOL        pcr
+  X:0C3FH         SYMBOL        kn
+  -------         ENDDO         
+  C:1B5CH         LINE#         82
+  C:1B64H         LINE#         88
+  C:1B73H         LINE#         89
+  C:1B87H         LINE#         90
+  C:1B98H         LINE#         91
+  C:1BDEH         LINE#         92
+  C:1BE9H         LINE#         93
+  C:1C02H         LINE#         94
+  C:1C25H         LINE#         95
+  C:1C38H         LINE#         96
+  C:1C4AH         LINE#         97
+  C:1C74H         LINE#         98
+  C:1C83H         LINE#         99
+  C:1C83H         LINE#         100
+  C:1C92H         LINE#         101
+  C:1C9BH         LINE#         102
+  C:1CA5H         LINE#         103
+  C:1CBAH         LINE#         104
+  C:1CBAH         LINE#         105
+  C:1CC9H         LINE#         106
+  C:1CD2H         LINE#         107
+  C:1CDCH         LINE#         108
+  C:1CEEH         LINE#         109
+  C:1D43H         LINE#         110
+  C:1D9BH         LINE#         111
+  C:1DA6H         LINE#         112
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/27/2008  20:30:12  PAGE 7
+
+
+  C:1DB7H         LINE#         113
+  -------         ENDPROC       _DESKEY
+  -------         PROC          _COOKEY
+  X:0CBFH         SYMBOL        raw1
+  -------         DO            
+  X:0CC2H         SYMBOL        cook
+  X:0CC5H         SYMBOL        raw0
+  X:0CC8H         SYMBOL        dough
+  X:0D48H         SYMBOL        i
+  -------         ENDDO         
+  C:1FC1H         LINE#         116
+  C:1FC7H         LINE#         121
+  C:1FD3H         LINE#         122
+  C:1FEEH         LINE#         123
+  C:2004H         LINE#         124
+  C:2015H         LINE#         125
+  C:204EH         LINE#         126
+  C:2084H         LINE#         127
+  C:20BDH         LINE#         128
+  C:20CEH         LINE#         129
+  C:210FH         LINE#         130
+  C:2145H         LINE#         131
+  C:217EH         LINE#         132
+  C:2199H         LINE#         133
+  -------         ENDPROC       _COOKEY
+  -------         PROC          _CPKEY
+  X:0BC3H         SYMBOL        into
+  -------         DO            
+  X:0BC6H         SYMBOL        from
+  X:0BC9H         SYMBOL        endp
+  -------         ENDDO         
+  C:252BH         LINE#         136
+  C:2531H         LINE#         139
+  C:2534H         LINE#         140
+  C:2569H         LINE#         141
+  -------         ENDPROC       _CPKEY
+  -------         PROC          _USEKEY
+  X:0D4AH         SYMBOL        from
+  -------         DO            
+  X:0D4DH         SYMBOL        to
+  X:0D50H         SYMBOL        endp
+  -------         ENDDO         
+  C:256AH         LINE#         143
+  C:2570H         LINE#         146
+  C:2573H         LINE#         147
+  C:25A8H         LINE#         148
+  -------         ENDPROC       _USEKEY
+  -------         PROC          _SCRUNCH
+  X:0BD2H         SYMBOL        outof
+  X:0BD5H         SYMBOL        into
+  C:21A2H         LINE#         160
+  C:21A8H         LINE#         161
+  C:21B7H         LINE#         162
+  C:21E8H         LINE#         163
+  C:221EH         LINE#         164
+  C:2248H         LINE#         165
+  C:2254H         LINE#         166
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/27/2008  20:30:12  PAGE 8
+
+
+  C:2285H         LINE#         167
+  C:22C0H         LINE#         168
+  -------         ENDPROC       _SCRUNCH
+  -------         PROC          _UNSCRUN
+  X:0BD2H         SYMBOL        outof
+  X:0BD5H         SYMBOL        into
+  C:24DFH         LINE#         171
+  C:24E5H         LINE#         172
+  C:24E5H         LINE#         173
+  C:24E5H         LINE#         174
+  C:24FDH         LINE#         175
+  C:2513H         LINE#         176
+  C:2513H         LINE#         177
+  C:2513H         LINE#         178
+  C:251BH         LINE#         179
+  -------         ENDPROC       _UNSCRUN
+  -------         PROC          _DESFUNC
+  X:0BD2H         SYMBOL        block
+  X:0BD5H         SYMBOL        keys
+  -------         DO            
+  X:0BD8H         SYMBOL        fval
+  X:0BDCH         SYMBOL        work
+  X:0BE0H         SYMBOL        right
+  X:0BE4H         SYMBOL        leftt
+  X:0BE8H         SYMBOL        round
+  -------         ENDDO         
+  C:0AC5H         LINE#         326
+  C:0ACBH         LINE#         330
+  C:0AD4H         LINE#         331
+  C:0ADDH         LINE#         332
+  C:0AEEH         LINE#         333
+  C:0AFDH         LINE#         334
+  C:0B21H         LINE#         335
+  C:0B2FH         LINE#         336
+  C:0B3EH         LINE#         337
+  C:0B57H         LINE#         338
+  C:0B6CH         LINE#         339
+  C:0B78H         LINE#         340
+  C:0B92H         LINE#         341
+  C:0BA4H         LINE#         342
+  C:0BB0H         LINE#         343
+  C:0BCAH         LINE#         344
+  C:0BF2H         LINE#         345
+  C:0BF2H         LINE#         346
+  C:0BF2H         LINE#         347
+  C:0BF2H         LINE#         348
+  C:0C1AH         LINE#         350
+  C:0C21H         LINE#         351
+  C:0C4AH         LINE#         352
+  C:0C59H         LINE#         353
+  C:0C5FH         LINE#         354
+  C:0C80H         LINE#         355
+  C:0CA9H         LINE#         356
+  C:0CD0H         LINE#         357
+  C:0CE2H         LINE#         358
+  C:0CF7H         LINE#         359
+  C:0D20H         LINE#         360
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/27/2008  20:30:12  PAGE 9
+
+
+  C:0D49H         LINE#         361
+  C:0D73H         LINE#         362
+  C:0D82H         LINE#         363
+  C:0DA5H         LINE#         364
+  C:0DB4H         LINE#         365
+  C:0DBAH         LINE#         366
+  C:0DDBH         LINE#         367
+  C:0E04H         LINE#         368
+  C:0E2BH         LINE#         369
+  C:0E3DH         LINE#         370
+  C:0E55H         LINE#         371
+  C:0E7EH         LINE#         372
+  C:0EA7H         LINE#         373
+  C:0ED1H         LINE#         374
+  C:0EE6H         LINE#         375
+  C:0F03H         LINE#         377
+  C:0F2CH         LINE#         378
+  C:0F2CH         LINE#         379
+  C:0F2CH         LINE#         380
+  C:0F2CH         LINE#         381
+  C:0F52H         LINE#         382
+  C:0F60H         LINE#         383
+  C:0F6FH         LINE#         384
+  C:0F8BH         LINE#         385
+  C:0F9CH         LINE#         386
+  C:0FABH         LINE#         387
+  C:0FC4H         LINE#         388
+  C:0FD6H         LINE#         389
+  C:0FE2H         LINE#         390
+  C:0FFCH         LINE#         391
+  C:1011H         LINE#         392
+  C:101DH         LINE#         393
+  C:1037H         LINE#         394
+  C:1046H         LINE#         395
+  -------         ENDPROC       _DESFUNC
+  -------         PROC          _DES_KEY
+  X:0BBDH         SYMBOL        dc
+  X:0BC0H         SYMBOL        key
+  C:25A9H         LINE#         407
+  C:25AFH         LINE#         408
+  C:25B9H         LINE#         409
+  C:25C2H         LINE#         410
+  C:25CFH         LINE#         411
+  -------         ENDPROC       _DES_KEY
+  -------         PROC          _DES_ENC
+  X:0BBDH         SYMBOL        dc
+  X:0BC0H         SYMBOL        Data
+  X:0BC3H         SYMBOL        blocks
+  -------         DO            
+  X:0BC5H         SYMBOL        work
+  X:0BCDH         SYMBOL        i
+  X:0BCFH         SYMBOL        cp
+  -------         ENDDO         
+  C:23FFH         LINE#         416
+  C:2405H         LINE#         421
+  C:240FH         LINE#         422
+  C:2428H         LINE#         423
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/27/2008  20:30:12  PAGE 10
+
+
+  C:243FH         LINE#         424
+  C:2455H         LINE#         425
+  C:246BH         LINE#         426
+  C:2475H         LINE#         427
+  C:2486H         LINE#         428
+  -------         ENDPROC       _DES_ENC
+  -------         PROC          _DES_DEC
+  X:0BBDH         SYMBOL        dc
+  X:0BC0H         SYMBOL        Data
+  X:0BC3H         SYMBOL        blocks
+  -------         DO            
+  X:0BC5H         SYMBOL        work
+  X:0BCDH         SYMBOL        i
+  X:0BCFH         SYMBOL        cp
+  -------         ENDDO         
+  C:2376H         LINE#         430
+  C:237CH         LINE#         435
+  C:2386H         LINE#         436
+  C:239FH         LINE#         437
+  C:23B6H         LINE#         438
+  C:23CDH         LINE#         439
+  C:23E3H         LINE#         440
+  C:23EDH         LINE#         441
+  C:23FEH         LINE#         442
+  -------         ENDPROC       _DES_DEC
+  C:1F68H         SYMBOL        L?0147
+  C:1F89H         SYMBOL        L?0158
+  C:1FA7H         SYMBOL        L?0161
+  C:1FB4H         SYMBOL        L?0196
+  -------         PROC          MAIN
+  -------         DO            
+  X:0A80H         SYMBOL        dc
+  X:0B80H         SYMBOL        i
+  X:0B82H         SYMBOL        Data
+  X:0BAAH         SYMBOL        cp
+  X:0BADH         SYMBOL        key
+  X:0BB5H         SYMBOL        x
+  -------         ENDDO         
+  C:1DC0H         LINE#         444
+  C:1DC0H         LINE#         448
+  C:1DCBH         LINE#         449
+  C:1DD6H         LINE#         454
+  C:1DD9H         LINE#         455
+  C:1DDCH         LINE#         456
+  C:1DDFH         LINE#         457
+  C:1DE1H         LINE#         458
+  C:1DE3H         LINE#         462
+  C:1DF1H         LINE#         464
+  C:1E03H         LINE#         465
+  C:1E16H         LINE#         466
+  C:1E1AH         LINE#         467
+  C:1E3EH         LINE#         468
+  C:1E3EH         LINE#         470
+  C:1E51H         LINE#         472
+  C:1E55H         LINE#         473
+  C:1E79H         LINE#         474
+  C:1E79H         LINE#         476
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/27/2008  20:30:12  PAGE 11
+
+
+  C:1E87H         LINE#         477
+  C:1ED3H         LINE#         479
+  C:1EEBH         LINE#         480
+  C:1F12H         LINE#         483
+  C:1F25H         LINE#         484
+  C:1F3FH         LINE#         485
+  C:1F66H         LINE#         487
+  C:1F68H         LINE#         489
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        DES
+
+  -------         MODULE        ?C?COPY
+  C:1501H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?CLDPTR
+  C:1527H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CLDOPTR
+  C:1540H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?CSTPTR
+  C:156DH         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?SIDIV
+  C:157FH         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?IILDX
+  C:15B5H         PUBLIC        ?C?IILDX
+  -------         ENDMOD        ?C?IILDX
+
+  -------         MODULE        ?C?ILDIX
+  C:15CBH         PUBLIC        ?C?ILDIX
+  -------         ENDMOD        ?C?ILDIX
+
+  -------         MODULE        ?C?ULSHR
+  C:15E1H         PUBLIC        ?C?ULSHR
+  -------         ENDMOD        ?C?ULSHR
+
+  -------         MODULE        ?C?LSHL
+  C:15F4H         PUBLIC        ?C?LSHL
+  -------         ENDMOD        ?C?LSHL
+
+  -------         MODULE        ?C?LLDPTR
+  C:1607H         PUBLIC        ?C?LLDPTR
+  -------         ENDMOD        ?C?LLDPTR
+
+  -------         MODULE        ?C?LLDOPTR
+  C:1627H         PUBLIC        ?C?LLDOPTR
+  -------         ENDMOD        ?C?LLDOPTR
+
+  -------         MODULE        ?C?LSTPTR
+  C:1657H         PUBLIC        ?C?LSTPTR
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/27/2008  20:30:12  PAGE 12
+
+
+  -------         ENDMOD        ?C?LSTPTR
+
+  -------         MODULE        ?C?LLDPTR0
+  C:1671H         PUBLIC        ?C?LLDPTR0
+  -------         ENDMOD        ?C?LLDPTR0
+
+  -------         MODULE        ?C?LSTXDATA
+  C:1691H         PUBLIC        ?C?LSTXDATA
+  -------         ENDMOD        ?C?LSTXDATA
+
+  -------         MODULE        ?C?LSTKXDATA
+  C:169DH         PUBLIC        ?C?LSTKXDATA
+  -------         ENDMOD        ?C?LSTKXDATA
+
+  -------         MODULE        ?C?OFFXADD
+  C:16CEH         PUBLIC        ?C?OFFXADD
+  -------         ENDMOD        ?C?OFFXADD
+
+  -------         MODULE        PRINTF
+  X:0BBDH         PUBLIC        ?_PRINTF517?BYTE
+  X:0BBDH         PUBLIC        ?_PRINTF?BYTE
+  X:0BBDH         PUBLIC        ?_SPRINTF517?BYTE
+  X:0BBDH         PUBLIC        ?_SPRINTF?BYTE
+  C:1862H         PUBLIC        _PRINTF
+  C:1862H         PUBLIC        _PRINTF517
+  C:185CH         PUBLIC        _SPRINTF
+  C:185CH         PUBLIC        _SPRINTF517
+  -------         ENDMOD        PRINTF
+
+  -------         MODULE        ?C?UIDIV
+  C:16DAH         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+  -------         MODULE        ?C?LLDIDATA
+  C:172FH         PUBLIC        ?C?LLDIDATA
+  -------         ENDMOD        ?C?LLDIDATA
+
+  -------         MODULE        ?C?LLDXDATA
+  C:173BH         PUBLIC        ?C?LLDXDATA
+  -------         ENDMOD        ?C?LLDXDATA
+
+  -------         MODULE        ?C?LLDPDATA
+  C:1747H         PUBLIC        ?C?LLDPDATA
+  -------         ENDMOD        ?C?LLDPDATA
+
+  -------         MODULE        ?C?LLDCODE
+  C:1753H         PUBLIC        ?C?LLDCODE
+  -------         ENDMOD        ?C?LLDCODE
+
+  -------         MODULE        ?C?LLDIDATA0
+  C:1763H         PUBLIC        ?C?LLDIDATA0
+  -------         ENDMOD        ?C?LLDIDATA0
+
+  -------         MODULE        ?C?LLDXDATA0
+  C:1770H         PUBLIC        ?C?LLDXDATA0
+  -------         ENDMOD        ?C?LLDXDATA0
+
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/27/2008  20:30:12  PAGE 13
+
+
+  -------         MODULE        ?C?LLDPDATA0
+  C:177CH         PUBLIC        ?C?LLDPDATA0
+  -------         ENDMOD        ?C?LLDPDATA0
+
+  -------         MODULE        ?C?LLDCODE0
+  C:1789H         PUBLIC        ?C?LLDCODE0
+  -------         ENDMOD        ?C?LLDCODE0
+
+  -------         MODULE        ?C?LSTIDATA
+  C:1799H         PUBLIC        ?C?LSTIDATA
+  -------         ENDMOD        ?C?LSTIDATA
+
+  -------         MODULE        ?C?LSTPDATA
+  C:17A5H         PUBLIC        ?C?LSTPDATA
+  -------         ENDMOD        ?C?LSTPDATA
+
+  -------         MODULE        ?C?PLDIXDATA
+  C:17B1H         PUBLIC        ?C?PLDIXDATA
+  -------         ENDMOD        ?C?PLDIXDATA
+
+  -------         MODULE        ?C?PSTXDATA
+  C:17C8H         PUBLIC        ?C?PSTXDATA
+  -------         ENDMOD        ?C?PSTXDATA
+
+  -------         MODULE        ?C?CCASE
+  C:17D1H         PUBLIC        ?C?CCASE
+  -------         ENDMOD        ?C?CCASE
+
+  -------         MODULE        PUTCHAR
+  C:25DEH         PUBLIC        _PUTCHAR
+  -------         ENDMOD        PUTCHAR
+
+Program Size: data=15.1 xdata=3411 code=9733
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
